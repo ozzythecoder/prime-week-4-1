@@ -129,15 +129,31 @@ console.log('Sum of positive numbers in posArray:', sumPositive(posArray));
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
 
-// let numString = 54321;
+// CodeWars: Given a random non-negative number,
+// you have to return the digits of this number within an array in reverse order.
 
-// function digitize(n) {
-//   let array = [];
-//   for (i = 0; i < n.length; i++) {
-//     array.unshift(n[i]);
-//   }
-//   return array;
-// }
+// My solution:
 
-// console.log(numString[2]); // expecting 3
-// console.log(digitize(54321)); // expecting [1, 2, 3, 4, 5]
+function digitize(n) {
+  n = n.toString(); // Convert number to string for indexing
+  let array = []; // Initialize empty array
+  for (i = 0; i < n.length; i++) {
+    array.unshift(parseInt(n[i])); // Convert each index of the string to a number, and place it at the beginning of the array
+  }
+  return array;
+}
+
+console.log(digitize(54321)); // expecting [1, 2, 3, 4, 5]
+
+// Bonus: Not my solution, but one that inspired me a lot, and that I wanted to try to understand.
+
+// As I understand it:
+// Creates an array from the string value of n, (first parameter of .from)
+// Maps each index of n as a number (second parameter of .from), and then reverses it.
+// A bit advanced for me at the moment, but very elegant.
+
+function digitize2(n) {
+  return Array.from(String(n), Number).reverse();
+}
+
+console.log(digitize2(65432)); // expecting [2, 3, 4, 5, 6]
